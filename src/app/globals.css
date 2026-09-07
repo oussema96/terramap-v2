@@ -3,7 +3,7 @@
 @import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 
 /* ==========================================
-   TerraMap CSS Stylesheet (Premium Dark Theme)
+   TerraLink CSS Stylesheet (Premium Dark Theme)
    ========================================== */
 
 :root {
@@ -14,26 +14,26 @@
     --bg-glass: rgba(21, 24, 30, 0.85);
     --border-light: rgba(255, 255, 255, 0.08);
     --border-focus: rgba(16, 185, 129, 0.5);
-    
+
     --text-primary: #f3f4f6;
     --text-secondary: #9ca3af;
     --text-muted: #6b7280;
-    
+
     --primary: #10b981;
     --primary-hover: #059669;
     --primary-glow: rgba(16, 185, 129, 0.25);
-    
+
     --secondary: #eab308;
     --secondary-hover: #ca8a04;
     --secondary-glow: rgba(234, 179, 8, 0.2);
-    
+
     --danger: #ef4444;
     --danger-hover: #dc2626;
-    
+
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
-    
+
     /* Layout */
     --sidebar-width: 420px;
     --sidebar-width-mobile: 100vw;
@@ -43,8 +43,6 @@
 
 /* Reset & Base Styles */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -53,12 +51,16 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
 }
@@ -68,13 +70,16 @@ h1, h2, h3, h4, h5, h6 {
     width: 6px;
     height: 6px;
 }
+
 ::-webkit-scrollbar-track {
     background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
@@ -274,7 +279,7 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     background: var(--primary);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.1s ease;
 }
 
@@ -392,9 +397,17 @@ input[type="range"]::-webkit-slider-thumb:hover {
     z-index: 10;
 }
 
-.badge-land { background: #3b82f6; }
-.badge-farm { background: var(--primary); }
-.badge-house { background: var(--secondary); }
+.badge-land {
+    background: #3b82f6;
+}
+
+.badge-farm {
+    background: var(--primary);
+}
+
+.badge-house {
+    background: var(--secondary);
+}
 
 .card-details {
     padding: 16px;
@@ -549,8 +562,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 2000; /* Always on top of everything */
-    box-shadow: var(--shadow-md), 0 0 0 4px var(--bg-surface); /* ring to separate from map */
+    z-index: 2000;
+    /* Always on top of everything */
+    box-shadow: var(--shadow-md), 0 0 0 4px var(--bg-surface);
+    /* ring to separate from map */
     transition: all var(--transition-speed) var(--transition-curve);
 }
 
@@ -585,7 +600,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 #map {
     width: 100%;
     height: 100%;
-    background-color: #0b0d10; /* Match dark theme */
+    background-color: #0b0d10;
+    /* Match dark theme */
 }
 
 /* Overlay HUD Coordinates */
@@ -793,13 +809,22 @@ input[type="range"]::-webkit-slider-thumb:hover {
     margin-bottom: 14px;
 }
 
-.col-6 { width: calc(50% - 8px); }
-.col-12 { width: 100%; }
+.col-6 {
+    width: calc(50% - 8px);
+}
+
+.col-12 {
+    width: 100%;
+}
 
 label {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-secondary);
+}
+
+.search-properties-input {
+    padding: 14px 36px !important;
 }
 
 input[type="text"],
@@ -819,7 +844,9 @@ textarea {
     transition: all 0.2s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: var(--primary);
     background-color: rgba(255, 255, 255, 0.05);
@@ -888,10 +915,25 @@ textarea {
     height: 16px;
 }
 
-.util-water { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
-.util-electricity { background: rgba(234, 179, 8, 0.15); color: #eab308; }
-.util-road { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
-.util-sewage { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.util-water {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.util-electricity {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.util-road {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+}
+
+.util-sewage {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
 
 .utility-label-text {
     font-size: 12px;
@@ -904,12 +946,34 @@ textarea {
 .utility-checkbox:has(input:checked) {
     border-color: currentColor;
 }
-.utility-checkbox:has(input:checked) .util-water { background: rgba(59, 130, 246, 0.3); border: 1px solid #3b82f6; }
-.utility-checkbox:has(input:checked) .util-electricity { background: rgba(234, 179, 8, 0.3); border: 1px solid #eab308; }
-.utility-checkbox:has(input:checked) .util-road { background: rgba(107, 114, 128, 0.3); border: 1px solid #9ca3af; }
-.utility-checkbox:has(input:checked) .util-sewage { background: rgba(16, 185, 129, 0.3); border: 1px solid #10b981; }
-.utility-checkbox:has(input:checked) .utility-label-text { color: var(--text-primary); }
-.utility-checkbox:has(input:checked) { background: rgba(255, 255, 255, 0.07); }
+
+.utility-checkbox:has(input:checked) .util-water {
+    background: rgba(59, 130, 246, 0.3);
+    border: 1px solid #3b82f6;
+}
+
+.utility-checkbox:has(input:checked) .util-electricity {
+    background: rgba(234, 179, 8, 0.3);
+    border: 1px solid #eab308;
+}
+
+.utility-checkbox:has(input:checked) .util-road {
+    background: rgba(107, 114, 128, 0.3);
+    border: 1px solid #9ca3af;
+}
+
+.utility-checkbox:has(input:checked) .util-sewage {
+    background: rgba(16, 185, 129, 0.3);
+    border: 1px solid #10b981;
+}
+
+.utility-checkbox:has(input:checked) .utility-label-text {
+    color: var(--text-primary);
+}
+
+.utility-checkbox:has(input:checked) {
+    background: rgba(255, 255, 255, 0.07);
+}
 
 /* Map polygon hover tooltip with utility icons */
 .map-utility-tooltip {
@@ -970,11 +1034,35 @@ textarea {
     height: 10px;
 }
 
-.pill-water { background: rgba(59,130,246,0.15); color: #60a5fa; border-color: rgba(59,130,246,0.3); }
-.pill-electricity { background: rgba(234,179,8,0.15); color: #fbbf24; border-color: rgba(234,179,8,0.3); }
-.pill-road { background: rgba(107,114,128,0.15); color: #d1d5db; border-color: rgba(107,114,128,0.3); }
-.pill-sewage { background: rgba(16,185,129,0.15); color: #34d399; border-color: rgba(16,185,129,0.3); }
-.pill-legal { background: rgba(168,85,247,0.15); color: #c084fc; border-color: rgba(168,85,247,0.3); }
+.pill-water {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.pill-electricity {
+    background: rgba(234, 179, 8, 0.15);
+    color: #fbbf24;
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+.pill-road {
+    background: rgba(107, 114, 128, 0.15);
+    color: #d1d5db;
+    border-color: rgba(107, 114, 128, 0.3);
+}
+
+.pill-sewage {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.pill-legal {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.3);
+}
 
 .map-helper-box {
     background-color: rgba(16, 185, 129, 0.04);
@@ -1390,10 +1478,13 @@ textarea {
 
 /* Animations */
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
     }
+
     50% {
         opacity: 0.7;
         transform: scale(1.08);
@@ -1467,9 +1558,19 @@ textarea {
 }
 
 @keyframes pulsate {
-    0% { transform: scale(0.1); opacity: 0.0; }
-    50% { opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 0.0; }
+    0% {
+        transform: scale(0.1);
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0.0;
+    }
 }
 
 /* Responsive Rules */
@@ -1479,16 +1580,16 @@ textarea {
         height: auto;
         max-height: 80vh;
     }
-    
+
     .details-media-col {
         border-right: none;
         border-bottom: 1px solid var(--border-light);
     }
-    
+
     .details-image-container {
         height: 200px;
     }
-    
+
     .modal-content-large {
         width: 95%;
         max-height: 90vh;
@@ -1502,36 +1603,37 @@ textarea {
         height: 100vh;
         z-index: 1002;
     }
-    
+
     .sidebar-toggle {
         left: var(--sidebar-width-mobile);
         z-index: 2000;
     }
-    
+
     /* Use JS class for collapsed state in mobile too */
     .sidebar-toggle.sidebar-collapsed {
         left: 0;
         transform: translateX(50%) rotate(180deg);
     }
-    
+
     .map-hud {
         bottom: 16px;
         right: 16px;
         padding: 6px 12px;
     }
-    
+
     .map-floating-btn {
         right: 16px;
     }
-    
+
     #btn-locate {
         bottom: 72px;
     }
-    
+
     #btn-map-type {
         bottom: 124px;
     }
 }
+
 /* ============================================
    Utility Filter Chips (sidebar)
    ============================================ */
@@ -1566,7 +1668,7 @@ textarea {
     font-size: 11px;
     font-weight: 600;
     color: var(--text-secondary);
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-light);
     cursor: pointer;
     transition: all 0.2s;
@@ -1588,7 +1690,7 @@ textarea {
 }
 
 .ufilter-chip:has(input:checked) {
-    background: rgba(16,185,129,0.15);
+    background: rgba(16, 185, 129, 0.15);
     border-color: var(--primary);
     color: var(--primary);
 }
@@ -1652,13 +1754,13 @@ textarea {
 .icon-btn:hover {
     color: var(--primary);
     border-color: var(--primary);
-    background: rgba(16,185,129,0.08);
+    background: rgba(16, 185, 129, 0.08);
 }
 
 .icon-btn.active {
     color: #f43f5e;
     border-color: #f43f5e;
-    background: rgba(244,63,94,0.1);
+    background: rgba(244, 63, 94, 0.1);
 }
 
 .wishlist-badge {
@@ -1686,7 +1788,7 @@ textarea {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border: none;
     color: #9ca3af;
     display: flex;
@@ -1705,7 +1807,7 @@ textarea {
 
 .card-wishlist-btn:hover,
 .card-wishlist-btn.wishlisted {
-    background: rgba(244,63,94,0.8);
+    background: rgba(244, 63, 94, 0.8);
     color: #fff;
 }
 
@@ -1726,7 +1828,7 @@ textarea {
     z-index: 1100;
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 -8px 32px rgba(0,0,0,0.4);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
     max-height: 50vh;
     display: flex;
     flex-direction: column;
@@ -1834,7 +1936,7 @@ textarea {
     font-size: 11px;
     color: var(--text-secondary);
     padding: 3px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .compare-row span:last-child {
@@ -1862,15 +1964,15 @@ textarea {
     padding: 4px;
     font-size: 11px;
     border-radius: 6px;
-    background: rgba(244,63,94,0.1);
-    border: 1px solid rgba(244,63,94,0.3);
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.3);
     color: #f43f5e;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .compare-remove-btn:hover {
-    background: rgba(244,63,94,0.2);
+    background: rgba(244, 63, 94, 0.2);
 }
 
 /* ============================================
@@ -1879,7 +1981,7 @@ textarea {
 .photo-upload-area {
     border: 2px dashed var(--border-light);
     border-radius: 12px;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     cursor: pointer;
     transition: all 0.2s;
     overflow: hidden;
@@ -1887,13 +1989,13 @@ textarea {
 
 .photo-upload-area:hover {
     border-color: var(--primary);
-    background: rgba(16,185,129,0.04);
+    background: rgba(16, 185, 129, 0.04);
 }
 
 .photo-upload-area.drag-over {
     border-color: var(--primary);
-    background: rgba(16,185,129,0.08);
-    box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
 .photo-upload-placeholder {

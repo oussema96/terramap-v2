@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { AuthProvider } from "@/components/auth/AuthContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TerraMap | Premium Land Marketplace",
+  title: "TerraLink Land Marketplace",
   description: "Discover, buy, and list agricultural and residential land on TerraMap.",
 };
 
@@ -13,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased dark">
-      <body className="font-sans min-h-full flex flex-col bg-[#0b0d10] text-gray-100">{children}</body>
+      <body className="font-sans min-h-full flex flex-col bg-[#0b0d10] text-gray-100">
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
   );
 }

@@ -2,10 +2,11 @@
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, UploadCloud, MapPin, Tag, DollarSign, Maximize2, User, Phone, FileText } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PropertyType } from '@/types';
 import { addProperty } from '@/lib/firebase/properties';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/components/auth/AuthContext';
 
 interface ListPropertyModalProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ const DEFAULT_IMAGES: Record<PropertyType, string> = {
 };
 
 export function ListPropertyModal({ isOpen, onOpenChange, coordinates, onSuccess }: ListPropertyModalProps) {
+  const { user } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -31,10 +33,20 @@ export function ListPropertyModal({ isOpen, onOpenChange, coordinates, onSuccess
     sizeUnit: 'acres' as 'acres' | 'sqft' | 'hectares' | 'sqm',
     placement: '',
     description: '',
-    ownerName: '',
-    contact: '',
+    ownerName: user?.displayName || user?.email || '',
+    contact: user?.email || '',
     image: '',
   });
+
+  useEffect(() => {
+    if (user && isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        ownerName: prev.ownerName || user.displayName || user.email || '',
+        contact: prev.contact || user.email || '',
+      }));
+    }
+  }, [user, isOpen]);
 
   const resetForm = () => {
     setFormData({

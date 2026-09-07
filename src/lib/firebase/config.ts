@@ -1,16 +1,19 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCS7XE0db2PPPa7_OhGrZkFA4UgTjQ_bAk",
-  authDomain: "terramap-7aa5c.firebaseapp.com",
-  projectId: "terramap-7aa5c",
-  storageBucket: "terramap-7aa5c.firebasestorage.app",
-  messagingSenderId: "142484933890",
-  appId: "1:142484933890:web:40feea5e7c2c5b2177861b",
-  measurementId: "G-7XXC2VW64R"
+  apiKey: "AIzaSyB_He4JR-UMbuzk8iH9nwJ0Rfs115Nckgk",
+  authDomain: "terralink-5b44a.firebaseapp.com",
+  projectId: "terralink-5b44a",
+  storageBucket: "terralink-5b44a.firebasestorage.app",
+  messagingSenderId: "942497011029",
+  appId: "1:942497011029:web:00f63bf2299660017d0bdc",
+  measurementId: "G-C3D6MX9RLJ"
 };
 
 // Initialize Firebase only if it hasn't been initialized already (fixes Next.js hot reload issues)
