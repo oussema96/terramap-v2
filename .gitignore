@@ -6,3 +6,6 @@
 # Node.js
 node_modules/
 
+# Environment files
+.env*.local
+.env

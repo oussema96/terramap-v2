@@ -13,7 +13,7 @@ interface MapClientProps {
   onPropertySelect: (id: string) => void;
   isDrawingMode?: boolean;
   onDrawComplete?: (coordinates: number[][]) => void;
-  mapType?: 'dark' | 'satellite';
+  mapType?: 'dark' | 'light' | 'satellite';
   locateTrigger?: number; // increment to trigger locate
 }
 
@@ -21,14 +21,22 @@ interface MapClientProps {
 const MAP_CENTER: [number, number] = [39.8283, -98.5795]; // US Center
 const MAP_ZOOM = 4;
 
+const CARTO_API_KEY = process.env.NEXT_PUBLIC_CARTO_API_KEY?.trim();
+
 const TILE_URLS = {
-  dark: `https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=${process.env.NEXT_PUBLIC_CARTO_API_KEY}`,
+  dark: CARTO_API_KEY
+    ? `https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=${CARTO_API_KEY}`
+    : 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png',
+  light: CARTO_API_KEY
+    ? `https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png?key=${CARTO_API_KEY}`
+    : 'https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
   satellite:
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
 };
 
 const TILE_ATTRIBUTIONS = {
   dark: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  light: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
   satellite: 'Tiles &copy; Esri',
 };
 
@@ -167,6 +175,8 @@ export default function MapClient({
           key={mapType}
           url={TILE_URLS[mapType]}
           attribution={TILE_ATTRIBUTIONS[mapType]}
+          subdomains={mapType === 'dark' || mapType === 'light' ? 'abcd' : 'abc'}
+          maxZoom={20}
         />
 
         {/* Render existing properties */}
